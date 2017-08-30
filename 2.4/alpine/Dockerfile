@@ -31,15 +31,13 @@ MAINTAINER Dave Conroy <dave at tiredofit dot ca>
 			glib-dev \
 			libc-dev \
 			libffi-dev \
-libressl \
-libressl-dev \
+			libressl \
+			libressl-dev \
 			libxml2-dev \
 			libxslt-dev \
 			linux-headers \
 			make \
 			ncurses-dev \
-#			openssl \
-#			openssl-dev \
 			procps \
 			readline-dev \
 			ruby \

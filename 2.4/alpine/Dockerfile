@@ -31,8 +31,8 @@ MAINTAINER Dave Conroy <dave at tiredofit dot ca>
 			glib-dev \
 			libc-dev \
 			libffi-dev \
-			openssl \
-			openssl-dev \
+			libressl \
+			libressl-dev \
 			libxml2-dev \
 			libxslt-dev \
 			linux-headers \
@@ -86,7 +86,7 @@ MAINTAINER Dave Conroy <dave at tiredofit dot ca>
 			bzip2 \
 			ca-certificates \
 			libffi-dev \
-			openssl-dev \
+			libressl-dev \
 			yaml-dev \
 			procps \
 			zlib-dev \

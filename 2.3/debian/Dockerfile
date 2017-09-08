@@ -1,5 +1,5 @@
 FROM tiredofit/debian:jessie
-MAINTAINER Dave Conroy <dave at tiredofit dot ca>
+LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 	RUN apt-get update \
 		&& apt-get install -y --no-install-recommends \

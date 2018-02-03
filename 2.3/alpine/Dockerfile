@@ -1,6 +1,5 @@
-FROM tiredofit/alpine:3.7
+FROM tiredofit/alpine:3.4
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
-
 
 # skip installing gem documentation
 RUN mkdir -p /usr/local/etc \
@@ -9,9 +8,9 @@ RUN mkdir -p /usr/local/etc \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.4
-ENV RUBY_VERSION 2.4.3
-ENV RUBY_DOWNLOAD_SHA256 23677d40bf3b7621ba64593c978df40b1e026d8653c74a0599f0ead78ed92b51
+ENV RUBY_MAJOR 2.3
+ENV RUBY_VERSION 2.3.6
+ENV RUBY_DOWNLOAD_SHA256 e0d969ac22d4a403c1204868bb9c0d068aa35045bb3934cf50b17b7f66059f56
 ENV RUBYGEMS_VERSION 2.7.4
 ENV BUNDLER_VERSION 1.16.1
 
@@ -33,8 +32,8 @@ RUN set -ex \
 		glib-dev \
 		libc-dev \
 		libffi-dev \
-		libressl \
-		libressl-dev \
+		openssl \
+		openssl-dev \
 		libxml2-dev \
 		libxslt-dev \
 		linux-headers \
@@ -87,7 +86,7 @@ RUN set -ex \
 		bzip2 \
 		ca-certificates \
 		libffi-dev \
-		libressl-dev \
+		openssl-dev \
 		procps \
 		yaml-dev \
 		zlib-dev \
@@ -108,5 +107,6 @@ ENV BUNDLE_PATH="$GEM_HOME" \
 	BUNDLE_APP_CONFIG="$GEM_HOME"
 ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
-&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN" && \
+	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN" && \
 gem install rails
+

@@ -1,4 +1,4 @@
-FROM tiredofit/alpine:3.4
+FROM registry.selfdesign.org/docker/alpine:3.7
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 # skip installing gem documentation
@@ -32,8 +32,8 @@ RUN set -ex \
 		glib-dev \
 		libc-dev \
 		libffi-dev \
-		openssl \
-		openssl-dev \
+		libressl \
+		libressl-dev \
 		libxml2-dev \
 		libxslt-dev \
 		linux-headers \
@@ -86,7 +86,7 @@ RUN set -ex \
 		bzip2 \
 		ca-certificates \
 		libffi-dev \
-		openssl-dev \
+		libressl-dev \
 		procps \
 		yaml-dev \
 		zlib-dev \

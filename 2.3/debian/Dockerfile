@@ -1,4 +1,4 @@
-FROM tiredofit/debian:jessie
+FROM registry.selfdesign.org/docker/debian:jessie
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 

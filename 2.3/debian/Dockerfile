@@ -1,6 +1,5 @@
-FROM registry.selfdesign.org/docker/debian:jessie
+FROM tiredofit/debian:jessie
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
-
 
 ENV RUBY_MAJOR 2.3
 ENV RUBY_VERSION 2.3.6

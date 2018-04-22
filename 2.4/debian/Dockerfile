@@ -72,11 +72,11 @@ RUN mkdir -p /usr/local/etc \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.4
-ENV RUBY_VERSION 2.4.3
-ENV RUBY_DOWNLOAD_SHA256 23677d40bf3b7621ba64593c978df40b1e026d8653c74a0599f0ead78ed92b51
-ENV RUBYGEMS_VERSION 2.7.4
-ENV BUNDLER_VERSION 1.16.1
+ENV RUBY_MAJOR=2.4 \
+    RUBY_VERSION=2.4.4 \
+    RUBY_DOWNLOAD_SHA256=1d0034071d675193ca769f64c91827e5f54cb3a7962316a41d5217c7bc6949f0 \
+    RUBYGEMS_VERSION=2.7.4 \
+    BUNDLER_VERSION=1.16.1
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -131,10 +131,10 @@ RUN set -ex \
 # and don't create ".bundle" in all our apps
 ENV GEM_HOME /usr/local/bundle
 ENV BUNDLE_PATH="$GEM_HOME" \
-	BUNDLE_BIN="$GEM_HOME/bin" \
-	BUNDLE_SILENCE_ROOT_WARNING=1 \
-	BUNDLE_APP_CONFIG="$GEM_HOME"
+    BUNDLE_BIN="$GEM_HOME/bin" \
+    BUNDLE_SILENCE_ROOT_WARNING=1 \
+    BUNDLE_APP_CONFIG="$GEM_HOME"
 ENV PATH $BUNDLE_BIN:$PATH
-RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
-	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN" && \
-gem install rails
+
+RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" && \
+    chmod 777 "$GEM_HOME" "$BUNDLE_BIN"

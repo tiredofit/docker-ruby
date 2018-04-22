@@ -1,5 +1,7 @@
-FROM tiredofit/debian:jessie
+FROM tiredofit/debian:stretch
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
+
+
 
 ENV RUBY_MAJOR 2.3
 ENV RUBY_VERSION 2.3.6
@@ -42,7 +44,7 @@ RUN buildpackDeps=' \
 		libpq-dev \
 		libreadline-dev \
 		libsqlite3-dev \
-		libssl-dev \
+		libssl1.0-dev \
 		libtool \
 		libwebp-dev \
 		libxml2-dev \
@@ -52,10 +54,22 @@ RUN buildpackDeps=' \
 		patch \
 		wget \
 		xz-utils \
-        zlib1g-dev ' && \
-    apt-get update && \
+        zlib1g-dev ' ; \
+    apt-get update ; \
     apt-get install -y --no-install-recommends $buildpackDeps 
 
+# skip installing gem documentation
+RUN mkdir -p /usr/local/etc \
+	&& { \
+		echo 'install: --no-document'; \
+		echo 'update: --no-document'; \
+	} >> /usr/local/etc/gemrc
+
+ENV RUBY_MAJOR 2.3
+ENV RUBY_VERSION 2.3.7
+ENV RUBY_DOWNLOAD_SHA256 c61f8f2b9d3ffff5567e186421fa191f0d5e7c2b189b426bb84498825d548edb
+ENV RUBYGEMS_VERSION 2.7.6
+ENV BUNDLER_VERSION 1.16.1
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -65,6 +79,9 @@ RUN set -ex \
 		bison \
 		dpkg-dev \
 		libgdbm-dev \
+		# ruby 2.3 on stretch can only support libssl1.0-dev (libssl dev from buildpack-deps is 1.1.x)
+		libssl1.0-dev \
+		wget \
 		ruby \
 	' \
 	&& apt-get update \
@@ -115,6 +132,4 @@ ENV BUNDLE_PATH="$GEM_HOME" \
 	BUNDLE_APP_CONFIG="$GEM_HOME"
 ENV PATH $BUNDLE_BIN:$PATH
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
-	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN" && \
-gem install rails
-
+	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"

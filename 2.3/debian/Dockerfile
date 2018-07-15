@@ -1,13 +1,11 @@
 FROM tiredofit/debian:stretch
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-
-
-ENV RUBY_MAJOR 2.3
-ENV RUBY_VERSION 2.3.6
-ENV RUBY_DOWNLOAD_SHA256 e0d969ac22d4a403c1204868bb9c0d068aa35045bb3934cf50b17b7f66059f56
-ENV RUBYGEMS_VERSION 2.7.4
-ENV BUNDLER_VERSION 1.16.1
+ENV RUBY_MAJOR=2.3 \
+    RUBY_VERSION=2.3.7 \
+    RUBY_DOWNLOAD_SHA256=c61f8f2b9d3ffff5567e186421fa191f0d5e7c2b189b426bb84498825d548edb \
+    RUBYGEMS_VERSION=2.7.7 \
+    BUNDLER_VERSION=1.16.2
 
 RUN buildpackDeps=' \
    		bzr \
@@ -64,12 +62,6 @@ RUN mkdir -p /usr/local/etc \
 		echo 'install: --no-document'; \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
-
-ENV RUBY_MAJOR 2.3
-ENV RUBY_VERSION 2.3.7
-ENV RUBY_DOWNLOAD_SHA256 c61f8f2b9d3ffff5567e186421fa191f0d5e7c2b189b426bb84498825d548edb
-ENV RUBYGEMS_VERSION 2.7.6
-ENV BUNDLER_VERSION 1.16.1
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built

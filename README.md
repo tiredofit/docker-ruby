@@ -4,10 +4,10 @@
 
 Dockerfile to build a [ruby](https://www.ruby-lang.org/) base image.
 
-* Currently tracking versions 2.3 and 2.4, 2.5 in Debian and Alpine
+* Currently tracking versions 2.3 and 2.4 in Debian and Alpine
 * Includes Bundler
 * [s6 overlay](https://github.com/just-containers/s6-overlay) enabled for PID 1 Init capabilities
-* [zabbix-agent](https://zabbix.org) based on 3.4 for individual container monitoring.
+* [zabbix-agent](https://zabbix.org) based on TRUNK compiled for individual container monitoring.
 * Cron installed along with other tools (bash,curl, less, logrotate, nano, vim) for easier management.
 
 # Authors
@@ -45,12 +45,8 @@ docker pull tiredofit/ruby:(imagetag)
 The following image tags are available:
 
 * `2.3-debian:latest` - Ruby 2.3.x - Debian Linux
-* `2.4-debian:latest` - Ruby 2.4.x - Debian Linux
-* `2.5-debian:latest` - Ruby 2.5.x - Debian Linux
-* `2.3-alpine:latest` - Ruby 2.4.x - Alpine Linux
 * `2.4-alpine:latest` - Ruby 2.4.x - Alpine Linux
-* `2.5-alpine:latest` - Ruby 2.5.x - Alpine Linux
-* `latest` - Ruby 2.5.x - Alpine Linux
+* `latest` - Ruby 2.4.x - Alpine Linux
 
 
 # Quick Start
@@ -64,12 +60,11 @@ which use this as a base.
 
 ### Environment Variables
 
-Along with the Environment Variables from the [Base image](https://hub.docker.com/r/tiredofit/debian), below is the complete list of available options that can be used to customize your installation.
+Along with the Environment Variables from the [Base image](https://hub.docker.com/r/tiredofit/alpine), below is the complete list of available options that can be used to customize your installation.
 
 ### Networking
 
 No Additional Ports Exposed
-
 
 # Maintenance
 #### Shell Access

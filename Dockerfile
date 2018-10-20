@@ -1,11 +1,11 @@
-FROM tiredofit/alpine:3.7
+FROM tiredofit/alpine:3.8
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_MAJOR=2.5 \
-    RUBY_VERSION=2.5.1 \
-    RUBY_DOWNLOAD_SHA256=886ac5eed41e3b5fc699be837b0087a6a5a3d10f464087560d2d21b3e71b754d \
+    RUBY_VERSION=2.5.3 \
+    RUBY_DOWNLOAD_SHA256=1cc9d0359a8ea35fc6111ec830d12e60168f3b9b305a3c2578357d360fcf306f \
     RUBYGEMS_VERSION=2.7.7 \
-    BUNDLER_VERSION=1.16.2
+    BUNDLER_VERSION=1.16.6
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built

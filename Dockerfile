@@ -1,4 +1,4 @@
-FROM tiredofit/alpine:3.8
+FROM tiredofit/alpine:3.11
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_MAJOR=2.4 \
@@ -105,6 +105,5 @@ ENV GEM_HOME="/usr/local/bundle" \
     PATH="/usr/local/bundle:$PATH"
 
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" && \
-	chmod 777 "$GEM_HOME" "$BUNDLE_BIN" && \
-    gem install rails
+    chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
 

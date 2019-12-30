@@ -1,3 +1,21 @@
+## 1.3 2019-10-21 <dave at tiredofit dot ca>
+
+* Cleanup Dockerfile
+* Remove Bundler
+
+## 1.2.5 2019-10-21 <dave at tiredofit dot ca>
+
+* Ruby 2.4.9
+* Alpine 3.10
+
+## 1.2.4 2018-12-10 <dave at tiredofit dot ca>
+
+* RubyGems 2.7.8
+
+## 1.2.3 2018-11-22 <dave at tiredofit dot ca>
+
+* Bundler 1.17.1 
+
 ## 1.2.2 2018-10-20 <dave at tiredofit dot ca>
 
 * Ruby 2.4.5

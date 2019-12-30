@@ -1,4 +1,4 @@
-FROM registry.selfdesign.org/docker/alpine/3.10:latest
+FROM tiredofit/alpine:3.11
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_VERSION=2.4.9 \

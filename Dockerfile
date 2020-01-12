@@ -1,11 +1,11 @@
 FROM tiredofit/debian:stretch
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-ENV RUBY_MAJOR 2.5
-ENV RUBY_VERSION 2.5.1
-ENV RUBY_DOWNLOAD_SHA256 886ac5eed41e3b5fc699be837b0087a6a5a3d10f464087560d2d21b3e71b754d
-ENV RUBYGEMS_VERSION 2.7.7
-ENV BUNDLER_VERSION 1.16.2
+ENV RUBY_MAJOR=2.6 \
+    RUBY_VERSION=2.6.2 \
+    RUBY_DOWNLOAD_SHA256=91fcde77eea8e6206d775a48ac58450afe4883af1a42e5b358320beb33a445fa \
+    RUBYGEMS_VERSION=3.0.1 \
+    BUNDLER_VERSION=1.17.2
 
 # skip installing gem documentation
 RUN set -ex && \

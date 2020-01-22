@@ -1,8 +1,8 @@
 FROM tiredofit/alpine:3.11
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-ENV RUBY_MAJOR=2.6 \
-    RUBY_VERSION=2.6.5
+ENV RUBY_MAJOR=2.7 \
+    RUBY_VERSION=2.7.0
 
 RUN set -x && \
     apk add --no-cache --virtual .ruby-builddeps \

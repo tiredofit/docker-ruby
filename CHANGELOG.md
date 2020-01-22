@@ -1,3 +1,8 @@
+## 1.4.0 2020-01-22 <dave at tiredofit dot ca>
+
+   ### Added
+      - Ruby 2.7.0
+
 ## 1.3.2 2019-12-22 <dave at tiredofit dot ca>
 
    ### Added

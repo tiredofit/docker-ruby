@@ -25,7 +25,7 @@ RUN set -x && \
 		ncurses-dev \
 		openssl \
 		openssl-dev \
-        patch \
+                patch \
 		procps \
 		readline-dev \
 		ruby \
@@ -91,7 +91,7 @@ RUN set -x && \
 		| grep -i ruby \
 	&& \
 	[ "$(command -v ruby)" = '/usr/local/bin/ruby' ] && \
-
+        \
 # rough smoke test
 	ruby --version && \
 	gem --version && \

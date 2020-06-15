@@ -1,3 +1,22 @@
+## 1.4.2 2020-06-15 <dave at tiredofit dot ca>
+
+   ### Added
+      - Update to Ruby 2.6.6
+
+
+## 1.4.1 2020-06-03 <dave at tiredofit dot ca>
+
+   ### Added
+      - Add patch to support building
+
+
+## 1.4.0 2020-06-03 <dave at tiredofit dot ca>
+
+   ### Added
+      - Alpine 3.12 Base
+      - Ruby 2.6.6
+
+
 ## 1.3.2 2019-12-22 <dave at tiredofit dot ca>
 
    ### Added

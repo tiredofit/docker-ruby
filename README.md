@@ -1,6 +1,6 @@
 # hub.docker.com/r/tiredofit/ruby
 
-# Introduction
+## Introduction
 
 Dockerfile to build a [ruby](https://www.ruby-lang.org/) base image.
 
@@ -10,11 +10,11 @@ Dockerfile to build a [ruby](https://www.ruby-lang.org/) base image.
 * [zabbix-agent](https://zabbix.org) based on 3.4 for individual container monitoring.
 * Cron installed along with other tools (bash,curl, less, logrotate, nano, vim) for easier management.
 
-# Authors
+## Authors
 
 - [Dave Conroy](https://github.com/tiredofit)
 
-# Table of Contents
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
@@ -28,11 +28,11 @@ Dockerfile to build a [ruby](https://www.ruby-lang.org/) base image.
     - [Shell Access](#shell-access)
    - [References](#references)
 
-# Prerequisites
+## Prerequisites
 
 No prequisites required
 
-# Installation
+## Installation
 
 Automated builds of the image are available on [Docker Hub](https://hub.docker.com/tiredofit/ruby) and 
 is the recommended method of installation.
@@ -55,14 +55,14 @@ The following image tags are available:
 * `latest` - Ruby 2.6.x - Alpine Linux
 
 
-# Quick Start
+### Quick Start
 
 Utilize this image as a base for further builds. By default it does not start the S6 Overlay system, but 
 Bash. Please visit the [s6 overlay repository](https://github.com/just-containers/s6-overlay) for 
 instructions on how to enable the S6 Init system when using this base or look at some of my other images 
 which use this as a base.
 
-# Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -73,8 +73,8 @@ Along with the Environment Variables from the [Base image](https://hub.docker.co
 No Additional Ports Exposed
 
 
-# Maintenance
-#### Shell Access
+## Maintenance
+### Shell Access
 
 For debugging and maintenance purposes you may want access the containers shell. 
 
@@ -82,7 +82,7 @@ For debugging and maintenance purposes you may want access the containers shell.
 docker exec -it (whatever your container name is e.g. alpine) bash
 ```
 
-# References
+## References
 
 * https://www.alpinelinux.org
 * https://www.debian.org

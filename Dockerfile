@@ -92,7 +92,10 @@ RUN set -eux && \
 # rough smoke test
 	ruby --version && \
 	gem --version && \
-	bundle --version
+	bundle --version && \
+    rm -rf /tmp/* && \
+    rm -rf /usr/src/* && \
+    rm -rf /var/cache/apk/* 
 
 # don't create ".bundle" in all our apps
 ENV GEM_HOME /usr/local/bundle

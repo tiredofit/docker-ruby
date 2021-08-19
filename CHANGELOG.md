@@ -1,3 +1,10 @@
+## 1.5.0 2021-08-19 <dave at tiredofit dot ca>
+
+   ### Added
+      - Alpine 3.1.4
+      - Ruby 2.7.4
+
+
 ## 1.4.2 2021-01-14 <dave at tiredofit dot ca>
 
    ### Changed

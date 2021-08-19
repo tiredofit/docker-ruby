@@ -1,4 +1,4 @@
-# hub.docker.com/r/tiredofit/ruby
+# github.com/tiredofit/docker-ruby
 
 # Introduction
 

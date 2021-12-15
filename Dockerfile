@@ -2,7 +2,7 @@ FROM tiredofit/debian:buster
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_MAJOR=3.0 \
-    RUBY_VERSION=3.0.5 \
+    RUBY_VERSION=3.0.3 \
     RUBYGEMS_VERSION=3.0.1 \
     BUNDLER_VERSION=1.17.3
 

@@ -1,3 +1,9 @@
+## 1.6.0 2021-12-15 <dave at tiredofit dot ca>
+
+   ### Added
+      - Ruby 3.0.5
+
+
 ## 1.5.3 2021-12-15 <dave at tiredofit dot ca>
 
    ### Added

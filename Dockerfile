@@ -3,7 +3,6 @@ LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_MAJOR=2.6 \
     RUBY_VERSION=2.6.9 \
-    RUBY_DOWNLOAD_SHA256=5db187882b7ac34016cd48d7032e197f07e4968f406b0690e20193b9b424841f \
     RUBYGEMS_VERSION=3.0.1 \
     BUNDLER_VERSION=1.17.3
 
@@ -62,11 +61,18 @@ RUN set -ex && \
 		unzip \
 		xz-utils \
 		zlib1g-dev ' && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends $buildpackDeps && \
+
+	buildDeps=' \
+		bison \
+		dpkg-dev \
+		libgdbm-dev \
+		ruby \
+	' && \
     \
 	apt-get update && \
 	apt-get install -y --no-install-recommends \
+			$buildpackDeps \
+			$buildDeps \
 			bzip2 \
 			ca-certificates \
 			libffi-dev \
@@ -74,28 +80,11 @@ RUN set -ex && \
 			libssl-dev \
 			libyaml-dev \
 			procps \
-			wget \
 			zlib1g-dev \
 			&& \
-    rm -rf /var/lib/apt/lists/* && \
     \
-	buildDeps=' \
-		bison \
-		dpkg-dev \
-		libgdbm-dev \
-		ruby \
-	' && \
-	apt-get update && \
-	apt-get install -y --no-install-recommends $buildDeps && \
-	rm -rf /var/lib/apt/lists/* && \
-	\
-	wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" && \
-	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.xz" | sha256sum -c - && \
-	\
 	mkdir -p /usr/src/ruby && \
-	tar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1 && \
-	rm ruby.tar.xz && \
-	\
+	curl -sSL "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" | tar xvJf - --strip 1 -C /usr/src/ruby && \
 	cd /usr/src/ruby && \
 	\
 # hack in "ENABLE_PATH_CHECK" disabling to suppress:
@@ -115,14 +104,14 @@ RUN set -ex && \
 		--enable-shared && \
 	make -j "$(nproc)" && \
 	make install && \
-
+    \
 	#apt-get purge -y --auto-remove $buildDeps \
 	cd / && \
-	rm -r /usr/src/ruby && \
-	\
 	gem update --system "$RUBYGEMS_VERSION" && \
 	gem install bundler --version "$BUNDLER_VERSION" --force && \
-	rm -r /root/.gem/
+	rm -r /usr/src/ruby && \
+	rm -r /root/.gem/ && \
+	rm -rf /var/lib/apt/lists/*
 
 # install things globally, for great justice
 # and don't create ".bundle" in all our apps

@@ -1,3 +1,9 @@
+## 1.3.2 2021-12-15 <dave at tiredofit dot ca>
+
+   ### Changed
+      - Build fix
+
+
 ## 1.3.1 2021-12-15 <dave at tiredofit dot ca>
 
    ### Added

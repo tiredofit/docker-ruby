@@ -1,5 +1,5 @@
 # Manual Workflow tiredofit/docker-ruby
-name: manual
+name: Manual
 
 on:
   workflow_dispatch:

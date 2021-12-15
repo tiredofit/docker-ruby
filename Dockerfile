@@ -111,7 +111,7 @@ RUN set -ex && \
 	#gem install bundler --version "$BUNDLER_VERSION" --force && \
         gem install bundler && \
 	rm -r /usr/src/ruby && \
-	rm -r /root/.gem/ && \
+	rm -rf /root/.gem/ && \
 	rm -rf /var/lib/apt/lists/*
 
 # install things globally, for great justice

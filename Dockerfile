@@ -1,11 +1,10 @@
-FROM tiredofit/debian:stretch
+FROM tiredofit/debian:buster
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-ENV RUBY_MAJOR=2.6 \
-    RUBY_VERSION=2.6.2 \
-    RUBY_DOWNLOAD_SHA256=91fcde77eea8e6206d775a48ac58450afe4883af1a42e5b358320beb33a445fa \
+ENV RUBY_MAJOR=2.7 \
+    RUBY_VERSION=2.7.5 \
     RUBYGEMS_VERSION=3.0.1 \
-    BUNDLER_VERSION=1.17.2
+    BUNDLER_VERSION=1.17.3
 
 # skip installing gem documentation
 RUN set -ex && \
@@ -14,8 +13,8 @@ RUN set -ex && \
 		echo 'install: --no-document'; \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc && \
-
-    buildpackDeps=' \
+    \
+	buildpackDeps=' \
    		bzr \
 		git \
 		mercurial \
@@ -37,13 +36,14 @@ RUN set -ex && \
 		libevent-dev \
 		libffi-dev \
 		libgdbm-dev \
-		libgeoip-dev \
 		libglib2.0-dev \
+		libgmp-dev \
 		libjpeg-dev \
 		libkrb5-dev \
 		liblzma-dev \
 		libmagickcore-dev \
 		libmagickwand-dev \
+		libmaxminddb-dev \
 		libncurses5-dev \
 		libncursesw5-dev \
 		libpng-dev \
@@ -58,43 +58,33 @@ RUN set -ex && \
 		libyaml-dev \
 		make \
 		patch \
-		wget \
+		unzip \
 		xz-utils \
-        zlib1g-dev ' && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends $buildpackDeps && \
-    \
-	apt-get update && \
-	apt-get install -y --no-install-recommends \
-			bzip2 \
-			ca-certificates \
-			libffi-dev \
-			libgdbm3 \
-			libssl-dev \
-			libyaml-dev \
-			procps \
-			wget \
-			zlib1g-dev \
-			&& \
-    rm -rf /var/lib/apt/lists/* && \
-    \
+		zlib1g-dev ' && \
+
 	buildDeps=' \
 		bison \
 		dpkg-dev \
 		libgdbm-dev \
 		ruby \
 	' && \
+    \
 	apt-get update && \
-	apt-get install -y --no-install-recommends $buildDeps && \
-	rm -rf /var/lib/apt/lists/* && \
-	\
-	wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" && \
-	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.xz" | sha256sum -c - && \
-	\
+	apt-get install -y --no-install-recommends \
+			$buildpackDeps \
+			$buildDeps \
+			bzip2 \
+			ca-certificates \
+			libffi-dev \
+			#libgdbm \
+			libssl-dev \
+			libyaml-dev \
+			procps \
+			zlib1g-dev \
+			&& \
+    \
 	mkdir -p /usr/src/ruby && \
-	tar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1 && \
-	rm ruby.tar.xz && \
-	\
+	curl -sSL "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" | tar xvJf - --strip 1 -C /usr/src/ruby && \
 	cd /usr/src/ruby && \
 	\
 # hack in "ENABLE_PATH_CHECK" disabling to suppress:
@@ -114,14 +104,14 @@ RUN set -ex && \
 		--enable-shared && \
 	make -j "$(nproc)" && \
 	make install && \
-	
+    \
 	#apt-get purge -y --auto-remove $buildDeps \
 	cd / && \
-	rm -r /usr/src/ruby && \
-	\
 	gem update --system "$RUBYGEMS_VERSION" && \
 	gem install bundler --version "$BUNDLER_VERSION" --force && \
-	rm -r /root/.gem/
+	rm -r /usr/src/ruby && \
+	rm -r /root/.gem/ && \
+	rm -rf /var/lib/apt/lists/*
 
 # install things globally, for great justice
 # and don't create ".bundle" in all our apps

@@ -2,7 +2,7 @@ FROM tiredofit/debian:buster
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
 ENV RUBY_MAJOR=2.6 \
-    RUBY_VERSION=2.6.6 \
+    RUBY_VERSION=2.6.9 \
     RUBY_DOWNLOAD_SHA256=5db187882b7ac34016cd48d7032e197f07e4968f406b0690e20193b9b424841f \
     RUBYGEMS_VERSION=3.0.1 \
     BUNDLER_VERSION=1.17.3

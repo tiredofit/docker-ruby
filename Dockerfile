@@ -1,8 +1,8 @@
 FROM tiredofit/debian:buster
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-ENV RUBY_MAJOR=2.7 \
-    RUBY_VERSION=2.7.5 \
+ENV RUBY_MAJOR=3.0 \
+    RUBY_VERSION=3.0.5 \
     RUBYGEMS_VERSION=3.0.1 \
     BUNDLER_VERSION=1.17.3
 
@@ -107,8 +107,9 @@ RUN set -ex && \
     \
 	#apt-get purge -y --auto-remove $buildDeps \
 	cd / && \
-	gem update --system "$RUBYGEMS_VERSION" && \
-	gem install bundler --version "$BUNDLER_VERSION" --force && \
+	gem update --system  && \
+	#gem install bundler --version "$BUNDLER_VERSION" --force && \
+        gem install bundler && \
 	rm -r /usr/src/ruby && \
 	rm -r /root/.gem/ && \
 	rm -rf /var/lib/apt/lists/*

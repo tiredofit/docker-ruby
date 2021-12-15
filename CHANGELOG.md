@@ -1,3 +1,9 @@
+## 1.5.0 2021-12-15 <dave at tiredofit dot ca>
+
+   ### Added
+      - Ruby 2.6.9
+
+
 ## 1.4.2 2020-06-15 <dave at tiredofit dot ca>
 
    ### Added

@@ -1,8 +1,7 @@
-FROM tiredofit/alpine:3.15
+FROM tiredofit/alpine:3.16
 LABEL maintainer="Dave Conroy (dave at tiredofit dot ca)"
 
-ENV RUBY_MAJOR=2.7 \
-    RUBY_VERSION=2.7.5
+ENV RUBY_VERSION=2.7.6
 
 RUN set -x && \
     apk add --no-cache -t .ruby-builddeps \
@@ -25,8 +24,8 @@ RUN set -x && \
 		make \
 		ncurses-dev \
 		openssl \
-		openssl-dev \
-        patch \
+ 		openssl-dev \
+                patch \
 		procps \
 		readline-dev \
 		ruby \
